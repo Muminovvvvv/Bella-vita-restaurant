@@ -1,1 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Royal Taste – Fine Dining Restaurant in Tashkent</title>
+  <meta name="description" content="Royal Taste – A premium fine dining experience in Tashkent with exquisite cuisine, award-winning chefs, online ordering, and table reservations. Book your unforgettable evening today." />
+  <meta name="keywords" content="Royal Taste, fine dining, restaurant Tashkent, luxury restaurant, table reservation, online food order, Wagyu, premium cuisine" />
+  <meta name="theme-color" content="#0A0804" />
+  <meta name="author" content="Royal Taste" />
+  <link rel="canonical" href="https://royaltaste.uz/" />
 
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="Royal Taste – Fine Dining Restaurant" />
+  <meta property="og:description" content="Where every dish tells a story of passion, tradition & elegance. Book a table or order online." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" />
+  <meta property="og:url" content="https://royaltaste.uz/" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Royal Taste – Fine Dining Restaurant" />
+  <meta name="twitter:description" content="A premium dining experience with exquisite cuisine and an unforgettable atmosphere." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85" />
+
+  <!-- Favicon (gold crown emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" />
+
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Royal Taste",
+    "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85",
+    "servesCuisine": ["Fine Dining", "European", "Mediterranean"],
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "42 Grand Boulevard",
+      "addressLocality": "Tashkent",
+      "addressCountry": "UZ",
+      "postalCode": "100000"
+    },
+    "telephone": "+998901234567",
+    "email": "info@royaltaste.uz",
+    "openingHours": ["Mo-Fr 12:00-23:00", "Sa-Su 11:00-00:00"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1000"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-pale: #F5E6B8;
+      --dark: #0A0804;
+      --dark-2: #120F08;
+      --dark-3: #1C1610;
+      --dark-4: #251E14;
+      --dark-5: #2E2518;
+      --cream: #F5EDD8;
+      --cream-dim: #C8B99A;
+      --text-muted: #8A7A62;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── LOADER ─── */
+    #loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--dark);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; color: var(--gold);
+      letter-spacing: .2em;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    .loader-line {
+      width: 0; height: 2px; background: var(--gold);
+      margin-top: 1rem;
+      animation: expand 2s ease forwards;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+    @keyframes expand { to { width: 160px } }
+
+    /* ─── NAVBAR ─── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s ease, padding .4s ease, backdrop-filter .4s;
+    }
+    #navbar.scrolled {
+      background: rgba(10,8,4,.94);
+      backdrop-filter: blur(12px);
+      padding: .8rem 2rem;
+      border-bottom: 1px solid rgba(201,168,76,.12);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--gold); letter-spacing: .08em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--cream); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream-dim); text-decoration: none;
+      font-size: .85rem; letter-spacing: .12em; text-transform: uppercase;
+      font-weight: 500; transition: color .25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-btn {
+      background: none; border: 1px solid rgba(201,168,76,.3);
+      color: var(--cream-dim); padding: .35rem .75rem;
+      border-radius: 4px; cursor: pointer; font-size: .78rem;
+      letter-spacing: .1em; transition: all .25s;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      border-color: var(--gold); color: var(--gold);
+      background: rgba(201,168,76,.07);
+    }
+    .cart-btn {
+      position: relative; background: none; border: none;
+      color: var(--cream); cursor: pointer; padding: .4rem;
+      transition: color .25s;
+    }
+    .cart-btn:hover { color: var(--gold); }
+    .cart-badge {
+      position: absolute; top: -4px; right: -4px;
+      background: var(--gold); color: var(--dark);
+      border-radius: 50%; width: 18px; height: 18px;
+      font-size: .65rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      display: none;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--dark);
+      border: none; padding: .55rem 1.4rem;
+      border-radius: 4px; cursor: pointer;
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      transition: all .25s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light); transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(201,168,76,.35);
+    }
+    .btn-outline {
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--gold); padding: .55rem 1.4rem;
+      border-radius: 4px; cursor: pointer;
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      transition: all .25s;
+      text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover {
+      background: rgba(201,168,76,.1); transform: translateY(-1px);
+    }
+    .hamburger {
+      display: none; background: none; border: none;
+      color: var(--cream); cursor: pointer; padding: .4rem;
+    }
+    @media (max-width: 900px) {
+      .nav-links, .nav-langs { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10,8,4,.98);
+        backdrop-filter: blur(8px);
+        align-items: center; justify-content: center;
+        gap: 2rem; z-index: 200;
+        padding: 5rem 2rem 2rem;
+      }
+      .nav-links.open a { font-size: 1.4rem; }
+      .nav-links.open #mobile-close {
+        position: absolute; top: 1.5rem; right: 1.5rem;
+        align-self: auto; margin-bottom: 0; font-size: 2rem;
+      }
+      .nav-links.open .mobile-langs { display: flex !important; gap: .75rem; margin-top: 1.5rem; }
+    }
+    .mobile-langs { display: none; }
+
+    /* ─── GOLD DIVIDER ─── */
+    .gold-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 1rem 0;
+    }
+    .gold-divider::before, .gold-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .gold-divider .diamond {
+      width: 8px; height: 8px;
+      background: var(--gold); transform: rotate(45deg);
+    }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem; letter-spacing: .25em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: .5rem;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,8,4,.45) 0%, rgba(10,8,4,.65) 60%, rgba(10,8,4,1) 100%),
+        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=90') center/cover no-repeat;
+    }
+    @media (max-width: 768px) {
+      .hero-bg {
+        background:
+          linear-gradient(to bottom, rgba(10,8,4,.5) 0%, rgba(10,8,4,.7) 60%, rgba(10,8,4,1) 100%),
+          url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80') center/cover no-repeat;
+      }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 2rem; }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold); color: var(--gold);
+      font-size: .72rem; letter-spacing: .3em; text-transform: uppercase;
+      padding: .45rem 1.4rem; border-radius: 2px; margin-bottom: 1.5rem;
+      opacity: 0;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700; line-height: 1.05;
+      color: var(--cream); margin-bottom: .5rem;
+      opacity: 0;
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--cream-dim); font-weight: 300;
+      margin-bottom: 2.5rem; letter-spacing: .05em;
+      opacity: 0;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: var(--cream-dim); font-size: .7rem; letter-spacing: .2em;
+      text-transform: uppercase; cursor: pointer; z-index: 2;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* ─── ABOUT ─── */
+    #about { padding: 8rem 2rem; background: var(--dark-2); }
+    .about-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    }
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .about-img-wrap { position: relative; }
+    .about-img-main {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-accent {
+      position: absolute; bottom: -2rem; right: -2rem;
+      width: 55%; aspect-ratio: 1; object-fit: cover;
+      border-radius: 2px;
+      border: 6px solid var(--dark-2);
+    }
+    .about-gold-box {
+      position: absolute; top: -1.5rem; left: -1.5rem;
+      width: 5rem; height: 5rem;
+      border: 1px solid var(--gold); border-radius: 2px; opacity: .4;
+    }
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+      line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    .about-text p {
+      color: var(--cream-dim); line-height: 1.8; margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+    .values-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+    }
+    .value-card {
+      background: var(--dark-3); padding: 1.2rem;
+      border-radius: 4px; border-left: 2px solid var(--gold);
+    }
+    .value-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: .95rem; margin-bottom: .4rem;
+    }
+    .value-card p { font-size: .82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── SECTION COMMON ─── */
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    }
+    .section-header p {
+      color: var(--cream-dim); margin-top: .75rem;
+      font-size: 1rem; max-width: 540px; margin-inline: auto; line-height: 1.7;
+    }
+    .max-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ─── FEATURED DISHES ─── */
+    #featured { padding: 8rem 0; background: var(--dark); }
+    .dishes-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .dish-card {
+      background: var(--dark-3); border-radius: 8px; overflow: hidden;
+      border: 1px solid rgba(201,168,76,.1);
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+      cursor: pointer;
+    }
+    .dish-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(201,168,76,.4);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 40px rgba(201,168,76,.06);
+    }
+    .dish-img {
+      width: 100%; height: 240px; object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .dish-card:hover .dish-img { transform: scale(1.06); }
+    .dish-img-wrap { overflow: hidden; position: relative; }
+    .dish-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--gold); color: var(--dark);
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      padding: .3rem .75rem; border-radius: 2px; text-transform: uppercase;
+    }
+    .dish-body { padding: 1.5rem; }
+    .dish-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 600; margin-bottom: .5rem;
+    }
+    .dish-body p { font-size: .85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.2rem; }
+    .dish-footer { display: flex; align-items: center; justify-content: space-between; }
+    .dish-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--gold); font-weight: 600;
+    }
+    .add-to-cart {
+      background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold); padding: .5rem 1rem; border-radius: 4px;
+      cursor: pointer; font-size: .8rem; letter-spacing: .08em;
+      transition: all .25s; font-weight: 500;
+    }
+    .add-to-cart:hover { background: var(--gold); color: var(--dark); }
+
+    /* ─── MENU ─── */
+    #menu { padding: 8rem 0; background: var(--dark-2); }
+    .menu-tabs {
+      display: flex; gap: .75rem; flex-wrap: wrap;
+      margin-bottom: 3rem; justify-content: center;
+    }
+    .menu-tab {
+      background: var(--dark-4); border: 1px solid rgba(201,168,76,.15);
+      color: var(--cream-dim); padding: .6rem 1.4rem;
+      border-radius: 4px; cursor: pointer; font-size: .82rem;
+      letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
+      transition: all .25s;
+    }
+    .menu-tab.active, .menu-tab:hover {
+      background: rgba(201,168,76,.12);
+      border-color: var(--gold); color: var(--gold);
+    }
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+    .menu-item {
+      display: flex; gap: 1.2rem; align-items: center;
+      background: var(--dark-3); padding: 1.2rem; border-radius: 6px;
+      border: 1px solid rgba(201,168,76,.08);
+      transition: border-color .25s, transform .25s;
+    }
+    .menu-item:hover { border-color: rgba(201,168,76,.3); transform: translateX(4px); }
+    .menu-item-img { width: 90px; height: 90px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+    .menu-item-info { flex: 1; }
+    .menu-item-info h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: .3rem; }
+    .menu-item-info p { font-size: .8rem; color: var(--text-muted); line-height: 1.55; margin-bottom: .6rem; }
+    .menu-item-footer { display: flex; align-items: center; justify-content: space-between; }
+    .menu-price { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; font-weight: 600; }
+
+    /* ─── ORDER / CART ─── */
+    #order { padding: 8rem 0; background: var(--dark); }
+    .order-grid { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; }
+    @media (max-width: 1000px) { .order-grid { grid-template-columns: 1fr; } }
+    .cart-box {
+      background: var(--dark-3); border-radius: 8px;
+      border: 1px solid rgba(201,168,76,.15); padding: 2rem; position: sticky; top: 7rem;
+    }
+    .cart-box h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem;
+      margin-bottom: 1.5rem; color: var(--gold);
+    }
+    .cart-items { min-height: 200px; margin-bottom: 1.5rem; }
+    .cart-empty { text-align: center; color: var(--text-muted); padding: 3rem 0; font-size: .9rem; }
+    .cart-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .cart-item-img { width: 52px; height: 52px; border-radius: 4px; object-fit: cover; }
+    .cart-item-info { flex: 1; }
+    .cart-item-info h5 { font-size: .9rem; margin-bottom: .2rem; }
+    .cart-item-info span { font-size: .8rem; color: var(--gold); }
+    .qty-ctrl { display: flex; align-items: center; gap: .5rem; }
+    .qty-btn {
+      background: var(--dark-4); border: 1px solid rgba(201,168,76,.2);
+      color: var(--cream); width: 26px; height: 26px;
+      border-radius: 4px; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .qty-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .qty-num { font-size: .9rem; min-width: 20px; text-align: center; }
+    .cart-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 1rem; border-top: 1px solid rgba(201,168,76,.2);
+      margin-bottom: 1rem;
+    }
+    .cart-total span { color: var(--cream-dim); font-size: .9rem; }
+    .cart-total strong { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); }
+    .checkout-form h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: .8rem; color: var(--cream-dim); letter-spacing: .08em; margin-bottom: .4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--dark-3); border: 1px solid rgba(201,168,76,.15);
+      color: var(--cream); padding: .7rem 1rem; border-radius: 4px;
+      font-family: 'Inter', sans-serif; font-size: .9rem;
+      transition: border-color .25s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group select option { background: var(--dark-3); }
+
+    /* ─── RESERVATION ─── */
+    #reservation { padding: 8rem 0; background: var(--dark-2); }
+    .reservation-inner {
+      max-width: 780px; margin: 0 auto;
+      background: var(--dark-3); border: 1px solid rgba(201,168,76,.15);
+      border-radius: 12px; padding: 3.5rem;
+    }
+    @media (max-width: 600px) { .reservation-inner { padding: 2rem 1.5rem; } }
+
+    /* ─── GALLERY ─── */
+    #gallery { padding: 8rem 0; background: var(--dark); }
+    .masonry {
+      columns: 3; gap: 1rem;
+    }
+    @media (max-width: 900px) { .masonry { columns: 2; } }
+    @media (max-width: 560px) { .masonry { columns: 1; } }
+    .masonry-item {
+      break-inside: avoid; margin-bottom: 1rem;
+      position: relative; overflow: hidden;
+      border-radius: 6px; cursor: pointer;
+    }
+    .masonry-item img {
+      width: 100%; display: block;
+      transition: transform .5s ease;
+    }
+    .masonry-item:hover img { transform: scale(1.06); }
+    .masonry-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .35s;
+    }
+    .masonry-item:hover .masonry-overlay { opacity: 1; }
+    .masonry-overlay svg { width: 32px; height: 32px; color: var(--gold); }
+    /* lightbox */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.95);
+      display: none; align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 4px; }
+    #lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      font-size: 2.5rem; color: var(--cream); cursor: pointer;
+      background: none; border: none; line-height: 1;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { padding: 8rem 0; background: var(--dark-2); }
+    .testimonial-carousel { position: relative; overflow: hidden; }
+    .testimonial-track { display: flex; transition: transform .6s cubic-bezier(.25,.8,.25,1); }
+    .testimonial-slide {
+      min-width: 100%; padding: 0 1rem;
+      display: flex; justify-content: center;
+    }
+    .testimonial-card {
+      max-width: 680px; background: var(--dark-3);
+      border: 1px solid rgba(201,168,76,.15); border-radius: 10px;
+      padding: 3rem; text-align: center;
+    }
+    .stars { color: var(--gold); font-size: 1.2rem; letter-spacing: .1em; margin-bottom: 1.5rem; }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-style: italic;
+      color: var(--cream); line-height: 1.65; margin-bottom: 2rem;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; justify-content: center; }
+    .testimonial-author img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+    .testimonial-author-info h4 { font-size: .95rem; text-align: left; }
+    .testimonial-author-info span { font-size: .8rem; color: var(--text-muted); }
+    .carousel-controls { display: flex; justify-content: center; gap: 1rem; margin-top: 2.5rem; }
+    .carousel-btn {
+      background: var(--dark-3); border: 1px solid rgba(201,168,76,.2);
+      color: var(--cream); width: 44px; height: 44px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .25s;
+    }
+    .carousel-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .carousel-dots { display: flex; gap: .5rem; align-items: center; }
+    .carousel-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(201,168,76,.25); cursor: pointer; transition: all .3s;
+    }
+    .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+    /* ─── WHY CHOOSE US ─── */
+    #why { padding: 8rem 0; background: var(--dark); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; }
+    .why-card {
+      background: var(--dark-3); border-radius: 8px;
+      border: 1px solid rgba(201,168,76,.1); padding: 2.5rem 2rem; text-align: center;
+      transition: transform .35s, border-color .35s, box-shadow .35s;
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,.4);
+    }
+    .why-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem; color: var(--gold); font-size: 1.5rem;
+    }
+    .why-card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; margin-bottom: .75rem; }
+    .why-card p { font-size: .87rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─── STATS ─── */
+    #stats {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--dark-4), var(--dark-5));
+      border-top: 1px solid rgba(201,168,76,.12);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+    @media (max-width: 700px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--gold);
+    }
+    .stat-label { font-size: .82rem; color: var(--cream-dim); letter-spacing: .12em; text-transform: uppercase; margin-top: .3rem; }
+
+    /* ─── CONTACT ─── */
+    #contact { padding: 8rem 0; background: var(--dark-2); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-info-item {
+      display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 2rem;
+    }
+    .contact-icon {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--gold);
+    }
+    .contact-info-item h4 { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+    .contact-info-item p { color: var(--cream-dim); font-size: .95rem; line-height: 1.6; }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem .5rem; margin-top: 1.5rem; }
+    .hours-grid span { font-size: .85rem; color: var(--cream-dim); }
+    .hours-grid strong { font-size: .85rem; color: var(--cream); }
+    .map-frame {
+      width: 100%; height: 300px; border-radius: 8px;
+      border: 1px solid rgba(201,168,76,.15); margin-top: 2rem; overflow: hidden;
+    }
+    .map-frame iframe { width: 100%; height: 100%; border: none; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark); border-top: 1px solid rgba(201,168,76,.12);
+      padding: 4rem 2rem 2rem;
+    }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand p { color: var(--text-muted); font-size: .88rem; line-height: 1.7; margin: 1rem 0; max-width: 260px; }
+    .social-links { display: flex; gap: .75rem; }
+    .social-link {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--dark-3); border: 1px solid rgba(201,168,76,.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cream-dim); transition: all .25s; text-decoration: none;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,.08); }
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--cream); margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: .6rem; }
+    .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: .88rem; transition: color .25s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto;
+      padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.06);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: .82rem; color: var(--text-muted); }
+
+    /* ─── SCROLL TO TOP ─── */
+    #scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--gold); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark); opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      box-shadow: 0 4px 20px rgba(201,168,76,.35);
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top:hover { transform: translateY(-3px); }
+
+    /* ─── CART SIDEBAR ─── */
+    #cart-sidebar {
+      position: fixed; right: 0; top: 0; bottom: 0; width: 420px; z-index: 800;
+      background: var(--dark-2); border-left: 1px solid rgba(201,168,76,.15);
+      transform: translateX(100%); transition: transform .4s cubic-bezier(.25,.8,.25,1);
+      display: flex; flex-direction: column; padding: 2rem;
+      overflow-y: auto;
+    }
+    #cart-sidebar.open { transform: translateX(0); }
+    #cart-overlay {
+      position: fixed; inset: 0; z-index: 799;
+      background: rgba(0,0,0,.65);
+      display: none;
+    }
+    #cart-overlay.open { display: block; }
+    @media (max-width: 460px) { #cart-sidebar { width: 100%; } }
+    .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .sidebar-header h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); }
+    .sidebar-close { background: none; border: none; color: var(--cream); cursor: pointer; font-size: 1.5rem; }
+    .sidebar-items { flex: 1; }
+    .sidebar-footer { border-top: 1px solid rgba(201,168,76,.15); padding-top: 1.5rem; margin-top: 1.5rem; }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--dark-3); border: 1px solid var(--gold);
+      color: var(--cream); padding: .75rem 1.5rem;
+      border-radius: 6px; font-size: .88rem;
+      opacity: 0; transition: all .35s; z-index: 1000; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal { opacity: 0; transform: translateY(40px); }
+    .reveal.visible { opacity: 1; transform: translateY(0); transition: opacity .75s ease, transform .75s ease; }
+    .reveal-left { opacity: 0; transform: translateX(-40px); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); transition: opacity .75s ease, transform .75s ease; }
+    .reveal-right { opacity: 0; transform: translateX(40px); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); transition: opacity .75s ease, transform .75s ease; }
+
+    /* ─── SUCCESS MESSAGE ─── */
+    .success-msg {
+      background: rgba(201,168,76,.1); border: 1px solid var(--gold);
+      border-radius: 6px; padding: 1.2rem; text-align: center;
+      color: var(--gold); font-size: .9rem; margin-top: 1rem;
+      display: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE OPTIMIZATION — TABLET & MOBILE
+       ═══════════════════════════════════════════════════════ */
+
+    /* Prevent any horizontal overflow globally */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; }
+
+    /* Better touch targets & tap feedback on all interactive elements */
+    button, a, .menu-tab, .lang-btn, .qty-btn, .add-to-cart, .carousel-btn {
+      -webkit-tap-highlight-color: rgba(201,168,76,.15);
+      touch-action: manipulation;
+    }
+
+    /* Prevent iOS auto-zoom on input focus (needs ≥16px) handled in mobile query below */
+    input, select, textarea { -webkit-appearance: none; appearance: none; }
+
+    /* ─── TABLET (≤1024px) ─── */
+    @media (max-width: 1024px) {
+      #navbar { padding: 1rem 1.5rem; }
+      #navbar.scrolled { padding: .7rem 1.5rem; }
+      .nav-links { gap: 1.4rem; }
+      #about, #featured, #menu, #order, #reservation,
+      #gallery, #testimonials, #why, #contact { padding-top: 6rem; padding-bottom: 6rem; }
+      #about { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .max-container { padding: 0 1.5rem; }
+      .section-header { margin-bottom: 3rem; }
+      .about-grid { gap: 4rem; }
+    }
+
+    /* ─── MOBILE (≤768px) ─── */
+    @media (max-width: 768px) {
+      /* Section spacing — tighter on mobile */
+      #about, #featured, #menu, #order, #reservation,
+      #gallery, #testimonials, #why, #contact { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+      #stats { padding: 4rem 0; }
+      #about { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .max-container { padding: 0 1.2rem; }
+
+      /* Hero — readable on small screens */
+      #hero { min-height: 600px; height: 100vh; height: 100svh; }
+      .hero-content { padding: 1.5rem; }
+      .hero-badge { font-size: .62rem; letter-spacing: .2em; padding: .4rem 1rem; margin-bottom: 1.2rem; }
+      .hero-ctas { gap: .75rem; width: 100%; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline {
+        flex: 1; min-width: 140px; text-align: center; padding: .8rem 1rem;
+      }
+      .hero-scroll { bottom: 1.5rem; }
+
+      /* Section headers */
+      .section-header { margin-bottom: 2.5rem; }
+      .section-header p { font-size: .92rem; }
+
+      /* About — remove offset images that break on mobile */
+      .about-grid { gap: 2.5rem; }
+      .about-img-accent { width: 45%; bottom: -1.2rem; right: -1rem; border-width: 4px; }
+      .about-gold-box { width: 3.5rem; height: 3.5rem; top: -1rem; left: -1rem; }
+      .values-grid { grid-template-columns: 1fr; gap: .85rem; }
+
+      /* Featured & menu — single column comfortable cards */
+      .dishes-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .dish-img { height: 220px; }
+      .menu-panel.active { grid-template-columns: 1fr; }
+
+      /* Menu tabs — horizontal scroll instead of wrapping mess */
+      .menu-tabs {
+        flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+        padding-bottom: .5rem; margin-left: -1.2rem; margin-right: -1.2rem;
+        padding-left: 1.2rem; padding-right: 1.2rem;
+        scrollbar-width: none; -ms-overflow-style: none;
+      }
+      .menu-tabs::-webkit-scrollbar { display: none; }
+      .menu-tab { flex-shrink: 0; padding: .55rem 1.1rem; font-size: .78rem; }
+
+      /* Menu item — stack image on top for very tight layouts kept inline but smaller */
+      .menu-item { padding: 1rem; gap: 1rem; }
+      .menu-item-img { width: 72px; height: 72px; }
+      .menu-item-info h4 { font-size: .98rem; }
+      .menu-item-info p { font-size: .76rem; }
+
+      /* Order section */
+      .order-grid { gap: 2rem; }
+      .cart-box { position: static; padding: 1.5rem; }
+
+      /* Reservation */
+      .reservation-inner { padding: 1.75rem 1.25rem; border-radius: 8px; }
+
+      /* Gallery */
+      .masonry { columns: 2; gap: .75rem; }
+      .masonry-item { margin-bottom: .75rem; }
+
+      /* Testimonials */
+      .testimonial-card { padding: 2rem 1.5rem; }
+      .testimonial-text { font-size: 1.15rem; }
+      .testimonial-author img { width: 44px; height: 44px; }
+
+      /* Why cards */
+      .why-grid { gap: 1.25rem; }
+      .why-card { padding: 2rem 1.5rem; }
+
+      /* Stats — 2x2 with breathing room */
+      .stats-grid { gap: 1.5rem 1rem; }
+
+      /* Contact */
+      .contact-grid { gap: 2.5rem; }
+      .map-frame { height: 240px; }
+
+      /* Footer */
+      footer { padding: 3rem 1.2rem 1.5rem; }
+      .footer-grid { gap: 2rem; margin-bottom: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: .5rem; }
+
+      /* Forms — 16px font prevents iOS zoom-on-focus */
+      .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+
+      /* Scroll-to-top — avoid overlapping content */
+      #scroll-top { bottom: 1.25rem; right: 1.25rem; width: 42px; height: 42px; }
+    }
+
+    /* ─── SMALL MOBILE (≤420px) ─── */
+    @media (max-width: 420px) {
+      #navbar { padding: .9rem 1rem; }
+      .nav-logo { font-size: 1.3rem; }
+      .max-container { padding: 0 1rem; }
+      #about { padding-left: 1rem; padding-right: 1rem; }
+
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-outline { width: 100%; }
+
+      /* Gallery single column on tiny screens */
+      .masonry { columns: 1; }
+
+      /* About accent image hidden — too cramped */
+      .about-img-accent { display: none; }
+      .about-gold-box { display: none; }
+
+      /* Stats single column */
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Menu item — allow text to breathe */
+      .menu-item { flex-direction: column; align-items: flex-start; text-align: left; }
+      .menu-item-img { width: 100%; height: 160px; }
+      .menu-item-footer { width: 100%; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── REDUCED MOTION — accessibility ─── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .reveal-left, .reveal-right { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ─── FOCUS VISIBILITY — keyboard accessibility ─── */
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible, .menu-tab:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+
+    /* ─── LANDSCAPE PHONE — prevent hero cutoff ─── */
+    @media (max-height: 500px) and (orientation: landscape) {
+      #hero { min-height: 480px; }
+      .hero-scroll { display: none; }
+    }
+
+    /* ─── SAFE AREA INSETS — notched phones (iPhone X+) ─── */
+    @supports (padding: max(0px)) {
+      #navbar { padding-left: max(2rem, env(safe-area-inset-left)); padding-right: max(2rem, env(safe-area-inset-right)); }
+      #scroll-top { bottom: max(2rem, env(safe-area-inset-bottom)); right: max(2rem, env(safe-area-inset-right)); }
+      #cart-sidebar { padding-bottom: max(2rem, env(safe-area-inset-bottom)); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Royal Taste</div>
+  <div class="loader-line"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lightbox-close">×</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- CART OVERLAY -->
+<div id="cart-overlay"></div>
+
+<!-- CART SIDEBAR -->
+<div id="cart-sidebar">
+  <div class="sidebar-header">
+    <h3 data-i18n="cart_title">Your Order</h3>
+    <button class="sidebar-close" id="cart-close">×</button>
+  </div>
+  <div class="sidebar-items">
+    <div id="sidebar-cart-items">
+      <div class="cart-empty" data-i18n="cart_empty">Your cart is empty. Add some dishes!</div>
+    </div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="cart-total">
+      <span data-i18n="total">Total</span>
+      <strong id="sidebar-total">$0.00</strong>
+    </div>
+    <button class="btn-primary" style="width:100%; margin-bottom:.75rem;" onclick="scrollToCheckout()" data-i18n="proceed_checkout">Proceed to Checkout</button>
+    <button class="btn-outline" style="width:100%;" onclick="closeSidebar()" data-i18n="continue_shopping">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Royal<span> Taste</span></a>
+  <ul class="nav-links" id="nav-links">
+    <button class="sidebar-close" style="display:none;align-self:flex-end;margin-bottom:2rem;" id="mobile-close">×</button>
+    <li><a href="#about" data-i18n="nav_about" onclick="closeMobileMenu()">About</a></li>
+    <li><a href="#featured" data-i18n="nav_dishes" onclick="closeMobileMenu()">Dishes</a></li>
+    <li><a href="#menu" data-i18n="nav_menu" onclick="closeMobileMenu()">Menu</a></li>
+    <li><a href="#reservation" data-i18n="nav_reserve" onclick="closeMobileMenu()">Reserve</a></li>
+    <li><a href="#gallery" data-i18n="nav_gallery" onclick="closeMobileMenu()">Gallery</a></li>
+    <li><a href="#contact" data-i18n="nav_contact" onclick="closeMobileMenu()">Contact</a></li>
+    <li><a href="#reservation" class="btn-primary" style="font-size:1rem;" onclick="closeMobileMenu()" data-i18n="book_table">Book a Table</a></li>
+    <li class="mobile-langs">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('uz')">UZ</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <div style="display:flex;gap:.4rem;" class="nav-langs">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('uz')">UZ</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
+    <button class="cart-btn" onclick="openSidebar()" aria-label="View cart">
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge" id="hero-badge" data-i18n="hero_badge">Fine Dining Experience</div>
+    <h1 class="hero-title" id="hero-title"><em data-i18n="hero_title1">Royal</em> <span data-i18n="hero_title2">Taste</span></h1>
+    <p class="hero-subtitle" id="hero-sub" data-i18n="hero_sub">Where every dish tells a story of passion, tradition & elegance</p>
+    <div class="hero-ctas" id="hero-ctas">
+      <a href="#menu" class="btn-primary" data-i18n="view_menu">View Menu</a>
+      <a href="#reservation" class="btn-outline" data-i18n="book_table">Book a Table</a>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})">
+    <span data-i18n="scroll_down">Scroll Down</span>
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal-left">
+      <div class="about-gold-box"></div>
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=85" alt="Royal Taste interior" loading="lazy" />
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=600&q=80" alt="Chef at work" loading="lazy" />
+    </div>
+    <div class="about-text reveal-right">
+      <span class="section-label" data-i18n="our_story_label">Our Story</span>
+      <h2 data-i18n="about_title">Crafting Unforgettable <em style="color:var(--gold);font-style:italic;">Moments</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="about_p1">Founded in 2019, Royal Taste was born from a single vision: to create a sanctuary where extraordinary cuisine meets soulful hospitality. Nestled in the heart of the city, our restaurant has become a landmark for those who seek the finest dining.</p>
+      <p data-i18n="about_p2">Our executive chef, trained in the kitchens of Paris and Istanbul, brings decades of artistry to every plate. We source only the freshest local ingredients, treating them with the respect they deserve to create dishes that are both innovative and deeply satisfying.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <h4 data-i18n="val1_title">🌿 Farm to Table</h4>
+          <p data-i18n="val1_text">Direct partnerships with local farms for the freshest seasonal produce.</p>
+        </div>
+        <div class="value-card">
+          <h4 data-i18n="val2_title">👨‍🍳 Expert Chefs</h4>
+          <p data-i18n="val2_text">Award-winning culinary team with 20+ years of international experience.</p>
+        </div>
+        <div class="value-card">
+          <h4 data-i18n="val3_title">🍷 Curated Wines</h4>
+          <p data-i18n="val3_text">An exceptional cellar featuring over 200 labels from world-class regions.</p>
+        </div>
+        <div class="value-card">
+          <h4 data-i18n="val4_title">✨ Luxury Ambiance</h4>
+          <p data-i18n="val4_text">Every detail crafted to create an atmosphere of refined elegance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED DISHES -->
+<section id="featured">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="chef_picks">Chef's Picks</span>
+      <h2 data-i18n="featured_title">Signature <em style="color:var(--gold);font-style:italic;">Creations</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="featured_sub">Handpicked masterpieces from our executive chef — each dish a journey of flavor and artistry.</p>
+    </div>
+    <div class="dishes-grid" id="featured-dishes"></div>
+  </div>
+</section>
+
+<!-- FULL MENU -->
+<section id="menu">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="explore_menu">Explore</span>
+      <h2 data-i18n="menu_title">Our Full <em style="color:var(--gold);font-style:italic;">Menu</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="menu_sub">A culinary journey through our entire offering — from light starters to indulgent desserts.</p>
+    </div>
+    <div class="menu-tabs" id="menu-tabs"></div>
+    <div id="menu-panels"></div>
+  </div>
+</section>
+
+<!-- ORDER ONLINE -->
+<section id="order">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="order_label">Online</span>
+      <h2 data-i18n="order_title">Order <em style="color:var(--gold);font-style:italic;">Online</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="order_sub">Place your order for delivery or pickup. Hot, fresh, and right to your door.</p>
+    </div>
+    <div class="order-grid">
+      <div>
+        <div class="checkout-form">
+          <h3 data-i18n="delivery_info">Delivery Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="label_name">Full Name</label>
+              <input type="text" placeholder="John Smith" id="order-name" />
+            </div>
+            <div class="form-group">
+              <label data-i18n="label_phone">Phone Number</label>
+              <input type="tel" placeholder="+1 555 000 0000" id="order-phone" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_address">Delivery Address</label>
+            <input type="text" placeholder="123 Main Street, City" id="order-address" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="label_type">Order Type</label>
+              <select id="order-type">
+                <option data-i18n="delivery">Delivery</option>
+                <option data-i18n="pickup">Pickup</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label data-i18n="label_payment">Payment</label>
+              <select id="order-pay">
+                <option data-i18n="cash">Cash on Delivery</option>
+                <option data-i18n="card">Credit / Debit Card</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_notes">Special Instructions</label>
+            <textarea placeholder="Allergies, preferences..." id="order-notes"></textarea>
+          </div>
+          <button class="btn-primary" onclick="placeOrder()" style="width:100%;padding:1rem;" data-i18n="place_order">Place Order</button>
+          <div class="success-msg" id="order-success" data-i18n="order_success">🎉 Your order has been placed! We'll call to confirm shortly.</div>
+        </div>
+      </div>
+      <div>
+        <div class="cart-box">
+          <h3 data-i18n="your_cart">Your Cart</h3>
+          <div class="cart-items" id="cart-items-main">
+            <div class="cart-empty" data-i18n="cart_empty">Your cart is empty. Add some dishes!</div>
+          </div>
+          <div class="cart-total">
+            <span data-i18n="total">Total</span>
+            <strong id="cart-total-main">$0.00</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="reserve_label">Reserve</span>
+      <h2 data-i18n="reserve_title">Book Your <em style="color:var(--gold);font-style:italic;">Table</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="reserve_sub">Reserve your table for an unforgettable dining experience. We'll confirm within 2 hours.</p>
+    </div>
+    <div class="reservation-inner reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="label_name">Full Name</label>
+          <input type="text" placeholder="Your name" id="res-name" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_phone">Phone Number</label>
+          <input type="tel" placeholder="+1 555 000 0000" id="res-phone" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="label_date">Date</label>
+          <input type="date" id="res-date" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_time">Time</label>
+          <select id="res-time">
+            <option>12:00</option><option>13:00</option><option>14:00</option>
+            <option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="label_guests">Number of Guests</label>
+          <select id="res-guests">
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option>
+            <option>7</option><option>8+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_occasion">Occasion (Optional)</label>
+          <select id="res-occasion">
+            <option data-i18n="occ_regular">Regular Dining</option>
+            <option data-i18n="occ_bday">Birthday</option>
+            <option data-i18n="occ_anniversary">Anniversary</option>
+            <option data-i18n="occ_business">Business Dinner</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="label_special">Special Requests</label>
+        <textarea placeholder="Dietary requirements, seating preferences, special setup..." id="res-special"></textarea>
+      </div>
+      <button class="btn-primary" onclick="makeReservation()" style="width:100%;padding:1rem;" data-i18n="confirm_reservation">Confirm Reservation</button>
+      <div class="success-msg" id="res-success" data-i18n="res_success">✅ Your reservation request has been received! We'll confirm via phone shortly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="gallery_label">Gallery</span>
+      <h2 data-i18n="gallery_title">A Visual <em style="color:var(--gold);font-style:italic;">Journey</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="gallery_sub">Step inside our world — where beauty is served on every plate and in every corner.</p>
+    </div>
+    <div class="masonry" id="gallery-grid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="reviews_label">Reviews</span>
+      <h2 data-i18n="reviews_title">What Our Guests <em style="color:var(--gold);font-style:italic;">Say</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+    </div>
+    <div class="testimonial-carousel">
+      <div class="testimonial-track" id="testimonial-track"></div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel-dots" id="carousel-dots"></div>
+      <button class="carousel-btn" id="next-btn">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="why_label">Why Us</span>
+      <h2 data-i18n="why_title">Why Choose <em style="color:var(--gold);font-style:italic;">Royal Taste</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+      <p data-i18n="why_sub">We don't just serve food — we craft experiences that linger long after the last bite.</p>
+    </div>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="max-container">
+    <div class="stats-grid">
+      <div class="reveal">
+        <div class="stat-num" data-target="1000">0</div>
+        <div class="stat-label" data-i18n="stat1">Happy Customers</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num" data-target="50">0</div>
+        <div class="stat-label" data-i18n="stat2">Signature Dishes</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num" data-target="5">0</div>
+        <div class="stat-label" data-i18n="stat3">Years Experience</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-num" id="rating-stat">4.9</div>
+        <div class="stat-label" data-i18n="stat4">Average Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max-container">
+    <div class="section-header reveal">
+      <span class="section-label" data-i18n="contact_label">Find Us</span>
+      <h2 data-i18n="contact_title">Get In <em style="color:var(--gold);font-style:italic;">Touch</em></h2>
+      <div class="gold-divider"><div class="diamond"></div></div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="address_label">Address</h4>
+            <p data-i18n="address_val">42 Grand Boulevard, Tashkent<br />Uzbekistan, 100000</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014 11.04 19.79 19.79 0 01.96 2.39 2 2 0 012.94.22h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="phone_label">Phone</h4>
+            <p><a href="tel:+998901234567" style="color:var(--cream-dim);text-decoration:none;">+998 90 123 45 67</a></p>
+            <p><a href="tel:+998711234567" style="color:var(--cream-dim);text-decoration:none;">+998 71 123 45 67</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="email_label">Email</h4>
+            <p><a href="mailto:info@royaltaste.uz" style="color:var(--cream-dim);text-decoration:none;">info@royaltaste.uz</a></p>
+            <p><a href="mailto:reservations@royaltaste.uz" style="color:var(--cream-dim);text-decoration:none;">reservations@royaltaste.uz</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4 data-i18n="hours_label">Opening Hours</h4>
+            <div class="hours-grid">
+              <span data-i18n="mon_fri">Mon – Fri</span><strong>12:00 – 23:00</strong>
+              <span data-i18n="sat_sun">Sat – Sun</span><strong>11:00 – 00:00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191913.79432095587!2d69.14867395656354!3d41.29951904099447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b0cc379e9c3%3A0xa5a9323b4aa5cb98!2sTashkent%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1699900000000!5m2!1sen!2s"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Royal Taste Location">
+          </iframe>
+        </div>
+        <div style="margin-top:2rem;">
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;" data-i18n="contact_us">Send a Message</h4>
+          <div class="form-group"><label data-i18n="label_name">Full Name</label><input type="text" placeholder="Your name" id="contact-name" /></div>
+          <div class="form-group"><label data-i18n="label_email">Email</label><input type="email" placeholder="your@email.com" id="contact-email" /></div>
+          <div class="form-group"><label data-i18n="label_msg">Message</label><textarea placeholder="How can we help?" id="contact-msg"></textarea></div>
+          <button class="btn-primary" onclick="sendMessage()" style="width:100%" data-i18n="send_msg">Send Message</button>
+          <div class="success-msg" id="contact-success" data-i18n="msg_success">✅ Message sent! We'll get back to you within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo" style="font-size:1.6rem;">Royal<span> Taste</span></a>
+      <p data-i18n="footer_desc">A sanctuary of fine dining where culinary artistry meets warm hospitality. Every meal is a memory in the making.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Telegram">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="quick_links">Quick Links</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+        <li><a href="#menu" data-i18n="nav_menu">Our Menu</a></li>
+        <li><a href="#reservation" data-i18n="nav_reserve">Reservation</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="menu_cats">Menu</h4>
+      <ul>
+        <li><a href="#menu" data-i18n="cat_starters">Starters</a></li>
+        <li><a href="#menu" data-i18n="cat_mains">Main Courses</a></li>
+        <li><a href="#menu" data-i18n="cat_pizza">Pizza</a></li>
+        <li><a href="#menu" data-i18n="cat_burgers">Burgers</a></li>
+        <li><a href="#menu" data-i18n="cat_desserts">Desserts</a></li>
+        <li><a href="#menu" data-i18n="cat_drinks">Drinks</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="contact_info">Contact</h4>
+      <ul>
+        <li><a href="tel:+998901234567">+998 90 123 45 67</a></li>
+        <li><a href="mailto:info@royaltaste.uz">info@royaltaste.uz</a></li>
+        <li><a href="#">42 Grand Blvd, Tashkent</a></li>
+      </ul>
+      <div style="margin-top:1rem;">
+        <div style="font-size:.8rem;color:var(--text-muted);" data-i18n="lang_switcher">Language</div>
+        <div style="display:flex;gap:.4rem;margin-top:.5rem;">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('uz')">UZ</button>
+          <button class="lang-btn" onclick="setLang('ru')">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="copyright">© 2025 Royal Taste. All rights reserved.</p>
+    <p style="color:var(--text-muted);font-size:.78rem;" data-i18n="made_with">Made with ❤️ for exceptional dining</p>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-top" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const featuredDishes = [
+  { id:'f1', name:'Wagyu Beef Tenderloin', desc:'120-day dry-aged A5 Wagyu, truffle jus, pomme purée, seasonal micro-greens.', price:68, badge:'Signature', img:'https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80' },
+  { id:'f2', name:'Lobster Bisque Royale', desc:'Atlantic lobster, saffron cream, cognac flambé, caviar pearls & chive oil.', price:42, badge:'Chef\'s Pick', img:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80' },
+  { id:'f3', name:'Truffle Mushroom Risotto', desc:'Carnaroli rice, black summer truffle, aged Parmigiano-Reggiano, truffle oil.', price:34, badge:'Vegetarian', img:'https://images.unsplash.com/photo-1673659473397-f4b3b3853bab?w=600&q=80' },
+];
+
+const menuData = {
+  starters: [
+    { id:'s1', name:'Burrata Salad', desc:'Creamy burrata, heirloom tomatoes, fresh basil & aged balsamic.', price:18, img:'https://images.unsplash.com/photo-1608032364895-84e4c0fd9f0f?w=200&q=75' },
+    { id:'s2', name:'Tuna Tartare', desc:'Yellow-fin tuna, avocado mousse, sesame, tobiko & ponzu gel.', price:24, img:'https://images.unsplash.com/photo-1635070040393-8855a87beed2?w=200&q=75' },
+    { id:'s3', name:'Foie Gras Toast', desc:'Duck foie gras terrine, brioche crostini, fig compote & Sauternes jelly.', price:29, img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&q=75' },
+    { id:'s4', name:'Shrimp Cocktail', desc:'Chilled tiger prawns, house cocktail sauce, lemon & dill.', price:22, img:'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=200&q=75' },
+  ],
+  mains: [
+    { id:'m1', name:'Wagyu Tenderloin', desc:'A5 Wagyu, truffle jus, pomme purée, seasonal greens.', price:68, img:'https://images.unsplash.com/photo-1558030006-450675393462?w=200&q=75' },
+    { id:'m2', name:'Pan-Seared Sea Bass', desc:'Chilean sea bass, beurre blanc, capers, wilted spinach & lemon.', price:44, img:'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=200&q=75' },
+    { id:'m3', name:'Rack of Lamb', desc:'New Zealand lamb rack, rosemary jus, ratatouille & gratin dauphinois.', price:52, img:'https://images.unsplash.com/photo-1559847844-5315695dadae?w=200&q=75' },
+    { id:'m4', name:'Duck Confit', desc:'Slow-cooked duck leg, cherry gastrique, lentils du Puy & crispy skin.', price:39, img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=200&q=75' },
+  ],
+  pizza: [
+    { id:'p1', name:'Margherita Classica', desc:'San Marzano tomato, buffalo mozzarella, fresh basil & extra virgin olive oil.', price:22, img:'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=200&q=75' },
+    { id:'p2', name:'Truffle Bianco', desc:'Crème fraîche, black truffle shavings, fontina, prosciutto & arugula.', price:34, img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&q=75' },
+    { id:'p3', name:'Diavola', desc:'Spicy Calabrian salami, cherry peppers, nduja, smoked provola & basil.', price:26, img:'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&q=75' },
+    { id:'p4', name:'Quattro Stagioni', desc:'Prosciutto, artichokes, mushrooms, black olives & cherry tomatoes.', price:28, img:'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=200&q=75' },
+  ],
+  burgers: [
+    { id:'b1', name:'Royal Wagyu Burger', desc:'200g Wagyu patty, aged cheddar, caramelized onion, black truffle aioli.', price:32, img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=75' },
+    { id:'b2', name:'Crispy Chicken', desc:'Nashville-spiced fried chicken, honey slaw, pickles & sriracha mayo.', price:22, img:'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=200&q=75' },
+    { id:'b3', name:'Mushroom Melt', desc:'Portobello mushroom, gruyère, roasted peppers, truffle mayo & rocket.', price:20, img:'https://images.unsplash.com/photo-1550317138-10000687a72b?w=200&q=75' },
+    { id:'b4', name:'Signature BBQ', desc:'Double smash patty, smoky BBQ sauce, bacon jam, onion rings & pickles.', price:28, img:'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200&q=75' },
+  ],
+  desserts: [
+    { id:'d1', name:'Chocolate Fondant', desc:'Warm dark chocolate bombe, Tahitian vanilla ice cream & caramel tuile.', price:16, img:'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&q=75' },
+    { id:'d2', name:'Crème Brûlée', desc:'Classic Madagascan vanilla, caramelized sugar crust & fresh raspberries.', price:14, img:'https://images.unsplash.com/photo-1470324161839-ce2bb6fa6bc3?w=200&q=75' },
+    { id:'d3', name:'Tiramisu', desc:'Espresso-soaked savoiardi, mascarpone cream, Valrhona cocoa dusting.', price:15, img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=200&q=75' },
+    { id:'d4', name:'Baklava Royal', desc:'Layers of phyllo, crushed pistachios & walnuts, rose water honey syrup.', price:13, img:'https://images.unsplash.com/photo-1519676867240-f03562e64548?w=200&q=75' },
+  ],
+  drinks: [
+    { id:'dr1', name:'Aged Negroni', desc:'Barrel-aged gin, Campari, sweet vermouth & orange peel.', price:18, img:'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=200&q=75' },
+    { id:'dr2', name:'Royal Spritz', desc:'Aperol, Prosecco, soda water, blood orange & fresh mint.', price:14, img:'https://images.unsplash.com/photo-1544145945-f90425340c7e?w=200&q=75' },
+    { id:'dr3', name:'Fresh Lemonade', desc:'Hand-squeezed citrus, honey syrup, garden mint & sparkling water.', price:8, img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=200&q=75' },
+    { id:'dr4', name:'Specialty Coffee', desc:'Single-origin Ethiopian espresso or cold brew, served your way.', price:7, img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&q=75' },
+  ]
+};
+
+const galleryImages = [
+  { src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', alt:'Restaurant ambiance' },
+  { src:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80', alt:'Gourmet dish' },
+  { src:'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=700&q=80', alt:'Interior' },
+  { src:'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80', alt:'Chef at work' },
+  { src:'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80', alt:'Steak' },
+  { src:'https://images.unsplash.com/photo-1551218372-a8789b81b253?w=700&q=80', alt:'Bar' },
+  { src:'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600&q=80', alt:'Sushi' },
+  { src:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80', alt:'Fine dining' },
+  { src:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&q=80', alt:'Plated dish' },
+];
+
+const testimonials = [
+  { text:"An evening at Royal Taste is unlike any other dining experience. Every dish was a masterpiece, and the service was impeccably warm and attentive. Truly five-star in every sense.", name:'Alexandra Morgan', role:'Food Critic, Tashkent Times', avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=75', stars:5 },
+  { text:"The Wagyu tenderloin melted in my mouth. The wine pairing was inspired, and the atmosphere was perfect for our anniversary. We will be returning every month!", name:'David & Sarah Chen', role:'Regular Guests', avatar:'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&q=75', stars:5 },
+  { text:"As a professional chef myself, I rarely find restaurants that genuinely impress me. Royal Taste did so effortlessly — extraordinary technique, impeccable ingredients, true artistry.", name:'Marco Ricci', role:'Executive Chef', avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=75', stars:5 },
+  { text:"From the bread service to the petit fours, every single detail was considered. The sommelier’s recommendations were outstanding. A new Tashkent institution.", name:'Nilufar Rashidova', role:'Business Executive', avatar:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=75', stars:5 },
+];
+
+const whyItems = [
+  { icon:'🌿', title:'Fresh Ingredients', desc:'We source exclusively from certified local farms and premium importers, delivering peak-freshness produce to your plate daily.' },
+  { icon:'⚡', title:'Fast Service', desc:'Efficient kitchen coordination ensures every dish arrives at its ideal temperature, never compromising on quality for speed.' },
+  { icon:'👨‍🍳', title:'Professional Chefs', desc:'Our culinary team holds accolades from Paris, Istanbul, and New York, united by a shared passion for excellence.' },
+  { icon:'✨', title:'Cozy Atmosphere', desc:'Thoughtfully designed interiors blend warm lighting, curated acoustics, and elegant décor for a truly immersive experience.' },
+];
+
+// ─── TRANSLATIONS ────────────────────────────────────────────────────────────
+const i18n = {
+  en: {
+    hero_badge:'Fine Dining Experience', hero_title1:'Royal', hero_title2:'Taste',
+    hero_sub:'Where every dish tells a story of passion, tradition & elegance',
+    view_menu:'View Menu', book_table:'Book a Table', scroll_down:'Scroll Down',
+    nav_about:'About', nav_dishes:'Dishes', nav_menu:'Menu', nav_reserve:'Reserve', nav_gallery:'Gallery', nav_contact:'Contact',
+    our_story_label:'Our Story', about_title:'Crafting Unforgettable Moments',
+    about_p1:'Founded in 2019, Royal Taste was born from a single vision: to create a sanctuary where extraordinary cuisine meets soulful hospitality. Nestled in the heart of the city, our restaurant has become a landmark for those who seek the finest dining.',
+    about_p2:'Our executive chef, trained in the kitchens of Paris and Istanbul, brings decades of artistry to every plate. We source only the freshest local ingredients, treating them with the respect they deserve.',
+    val1_title:'🌿 Farm to Table', val1_text:'Direct partnerships with local farms for the freshest seasonal produce.',
+    val2_title:'👨‍🍳 Expert Chefs', val2_text:'Award-winning culinary team with 20+ years of international experience.',
+    val3_title:'🍷 Curated Wines', val3_text:'An exceptional cellar featuring over 200 labels from world-class regions.',
+    val4_title:'✨ Luxury Ambiance', val4_text:'Every detail crafted to create an atmosphere of refined elegance.',
+    chef_picks:"Chef's Picks", featured_title:'Signature Creations', featured_sub:"Handpicked masterpieces from our executive chef — each dish a journey of flavor and artistry.",
+    explore_menu:'Explore', menu_title:'Our Full Menu', menu_sub:'A culinary journey through our entire offering — from light starters to indulgent desserts.',
+    cat_starters:'Starters', cat_mains:'Main Courses', cat_pizza:'Pizza', cat_burgers:'Burgers', cat_desserts:'Desserts', cat_drinks:'Drinks',
+    order_label:'Online', order_title:'Order Online', order_sub:'Place your order for delivery or pickup. Hot, fresh, and right to your door.',
+    delivery_info:'Delivery Information', label_name:'Full Name', label_phone:'Phone Number', label_address:'Delivery Address',
+    label_type:'Order Type', label_payment:'Payment', label_notes:'Special Instructions',
+    delivery:'Delivery', pickup:'Pickup', cash:'Cash on Delivery', card:'Credit / Debit Card',
+    place_order:'Place Order', order_success:'🎉 Your order has been placed! We\'ll call to confirm shortly.',
+    your_cart:'Your Cart', cart_empty:'Your cart is empty. Add some dishes!', total:'Total',
+    cart_title:'Your Order', proceed_checkout:'Proceed to Checkout', continue_shopping:'Continue Shopping',
+    reserve_label:'Reserve', reserve_title:'Book Your Table', reserve_sub:"Reserve your table for an unforgettable dining experience. We'll confirm within 2 hours.",
+    label_date:'Date', label_time:'Time', label_guests:'Number of Guests', label_occasion:'Occasion (Optional)',
+    label_special:'Special Requests', label_email:'Email', label_msg:'Message',
+    occ_regular:'Regular Dining', occ_bday:'Birthday', occ_anniversary:'Anniversary', occ_business:'Business Dinner',
+    confirm_reservation:'Confirm Reservation', res_success:'✅ Your reservation request has been received! We\'ll confirm via phone shortly.',
+    gallery_label:'Gallery', gallery_title:'A Visual Journey', gallery_sub:'Step inside our world — where beauty is served on every plate and in every corner.',
+    reviews_label:'Reviews', reviews_title:'What Our Guests Say',
+    why_label:'Why Us', why_title:'Why Choose Royal Taste', why_sub:"We don’t just serve food — we craft experiences that linger long after the last bite.",
+    stat1:'Happy Customers', stat2:'Signature Dishes', stat3:'Years Experience', stat4:'Average Rating',
+    contact_label:'Find Us', contact_title:'Get In Touch',
+    address_label:'Address', address_val:'42 Grand Boulevard, Tashkent\nUzbekistan, 100000',
+    phone_label:'Phone', email_label:'Email', hours_label:'Opening Hours',
+    mon_fri:'Mon – Fri', sat_sun:'Sat – Sun',
+    contact_us:'Send a Message', send_msg:'Send Message', msg_success:'✅ Message sent! We\'ll get back to you within 24 hours.',
+    quick_links:'Quick Links', menu_cats:'Menu', contact_info:'Contact Info', lang_switcher:'Language',
+    footer_desc:'A sanctuary of fine dining where culinary artistry meets warm hospitality. Every meal is a memory in the making.',
+    copyright:'© 2025 Royal Taste. All rights reserved.', made_with:'Made with ❤️ for exceptional dining',
+    add_cart:'Add to Cart',
+  },
+  uz: {
+    hero_badge:'Yuqori Darajali Ovqatlanish', hero_title1:'Royal', hero_title2:'Taste',
+    hero_sub:"Har bir taom ishtiyoq, anʻana va nafislik haqida hikoya aytadi",
+    view_menu:"Menyuni Koʻrish", book_table:'Stol Band Qilish', scroll_down:"Pastga Oʻtish",
+    nav_about:'Haqida', nav_dishes:'Taomlar', nav_menu:'Menyu', nav_reserve:'Band Qilish', nav_gallery:'Galereya', nav_contact:"Aloqa",
+    our_story_label:'Bizning Tarix', about_title:'Unutilmas Lahzalar Yaratamiz',
+    about_p1:'2019-yilda tashkil etilgan Royal Taste — bu bir maqsad asosida yaratilgan: ajoyib oshxona va samimiy mehmondo\'stlikni birlashtirgan muqaddas joy. Shahar markazida joylashgan restoranimiz eng yaxshi ovqatlanishni qidiruvchilar uchun mashhur joyga aylandi.',
+    about_p2:"Paris va Istanbulda tayyorlanayotgan bosh oshpazimiz har bir taomga oʻnlab yillik mahorat olib keladi. Faqat eng yangi mahalliy ingredientlardan foydalanamiz.",
+    val1_title:'🌿 Fermadan Stolga', val1_text:'Eng yangi mavsumiy mahsulotlar uchun mahalliy fermerlar bilan bevosita hamkorlik.',
+    val2_title:'👨‍🍳 Mutaxassis Oshpazlar', val2_text:'Xalqaro tajribaga ega 20+ yillik mukofotli oshpazlar jamoasi.',
+    val3_title:'🍷 Tanlab Olingan Vinolar', val3_text:"Dunyodagi eng yaxshi viloyatlardan 200+ yorliqni oʻz ichiga olgan ajoyib yertoʻla.",
+    val4_title:'✨ Hashamatli Muhit', val4_text:'Nafis elegantlik muhitini yaratish uchun har bir detal puxta o\'ylangan.',
+    chef_picks:"Oshpaz Tanlovi", featured_title:"Imzoli Yaratmalar", featured_sub:"Bosh oshpazimizdan qo'lda tanlangan durdonalar — har bir taom maza va san'at sayohati.",
+    explore_menu:"Koʻrish", menu_title:"To'liq Menyumiz", menu_sub:"Engil salatlardan qoʻshib olishgacha — toʻliq taklifimiz boʻylab oshxona sayohati.",
+    cat_starters:'Salatlar', cat_mains:'Asosiy Taomlar', cat_pizza:'Pizza', cat_burgers:'Burgerlar', cat_desserts:'Desertlar', cat_drinks:'Ichimliklar',
+    order_label:'Onlayn', order_title:'Onlayn Buyurtma', order_sub:"Yetkazib berish yoki olib ketish uchun buyurtma bering. Issiq, yangi va eshikkacha.",
+    delivery_info:"Yetkazish Maʻlumotlari", label_name:"Toʻliq Ism", label_phone:'Telefon Raqami', label_address:'Yetkazish Manzili',
+    label_type:'Buyurtma Turi', label_payment:"Toʻllov", label_notes:'Maxsus Talablar',
+    delivery:'Yetkazib Berish', pickup:'Olib Ketish', cash:"Naqd Toʻllov", card:"Kredit / Debit Karta",
+    place_order:'Buyurtma Berish', order_success:"🎉 Buyurtmangiz qabul qilindi! Tez orada tasdiqlash uchun qoʻngʻiroq qilamiz.",
+    your_cart:'Savatingiz', cart_empty:"Savat boʻsh. Bir nechta taom qoʻshing!", total:'Jami',
+    cart_title:'Buyurtmangiz', proceed_checkout:"Kassaga Oʻtish", continue_shopping:'Xaridni Davom Ettirish',
+    reserve_label:'Band Qilish', reserve_title:'Stolingizni Band Qiling', reserve_sub:"Unutilmas ovqatlanish tajribasi uchun stolingizni band qiling. 2 soat ichida tasdiqlaymiz.",
+    label_date:'Sana', label_time:'Vaqt', label_guests:'Mehmonlar Soni', label_occasion:'Munosabat (Ixtiyoriy)',
+    label_special:'Maxsus Talablar', label_email:'Elektron Pochta', label_msg:'Xabar',
+    occ_regular:'Oddiy Ovqatlanish', occ_bday:"Tugʻilgan Kun", occ_anniversary:'Yubiley', occ_business:'Biznes Kechki Ovqat',
+    confirm_reservation:'Band Qilishni Tasdiqlash', res_success:"✅ Bronlash soʻrovingiz qabul qilindi! Tez orada telefon orqali tasdiqlaymiz.",
+    gallery_label:'Galereya', gallery_title:'Vizual Sayohat', gallery_sub:"Dunyomizga qadam qoʻying — goʻzallik har bir taomda va har bir burchakda.",
+    reviews_label:'Sharhlar', reviews_title:'Mehmonlarimiz Nima Deydi',
+    why_label:'Nega Biz', why_title:'Nega Royal Taste', why_sub:"Biz faqat ovqat emas — oxirgi luqmadan keyin ham saqlanadigan tajribalar yaratamiz.",
+    stat1:'Xursand Mijozlar', stat2:'Imzoli Taomlar', stat3:'Yillik Tajriba', stat4:"Oʻrtacha Reyting",
+    contact_label:'Bizni Toping', contact_title:"Bogʻlaning",
+    address_label:'Manzil', address_val:"42 Grand Boulevard, Toshkent\nOʻzbekiston, 100000",
+    phone_label:'Telefon', email_label:'Elektron Pochta', hours_label:"Ish Vaqti",
+    mon_fri:'Dush – Jum', sat_sun:'Shan – Yak',
+    contact_us:'Xabar Yuboring', send_msg:'Xabar Yuborish', msg_success:"✅ Xabar yuborildi! 24 soat ichida javob beramiz.",
+    quick_links:"Tezkor Havolalar", menu_cats:'Menyu', contact_info:"Aloqa Maʻlumotlari", lang_switcher:'Til',
+    footer_desc:"Oshpazlik sanʻati va iliq mehmondoʻstlik uygʻunlashgan nozik ovqatlanish maskani. Har bir ovqat — xotirada qoladigan lahza.",
+    copyright:'© 2025 Royal Taste. Barcha huquqlar himoyalangan.', made_with:"❤️ bilan ajoyib ovqatlanish uchun yaratildi",
+    add_cart:"Savatga Qo'shish",
+  },
+  ru: {
+    hero_badge:'Изысканный Гастрономический Опыт', hero_title1:'Royal', hero_title2:'Taste',
+    hero_sub:'Где каждое блюдо рассказывает историю страсти, традиций и элегантности',
+    view_menu:'Смотреть Меню', book_table:'Забронировать Стол', scroll_down:'Прокрутить вниз',
+    nav_about:'О нас', nav_dishes:'Блюда', nav_menu:'Меню', nav_reserve:'Резервация', nav_gallery:'Галерея', nav_contact:'Контакты',
+    our_story_label:'Наша История', about_title:'Создаём Незабываемые Моменты',
+    about_p1:'Основанный в 2019 году, Royal Taste возник из единого видения: создать sanctuary, где выдающаяся кухня сочетается с душевным гостеприимством. Расположенный в сердце города, наш ресторан стал ориентиром для тех, кто ищет лучший ужин.',
+    about_p2:'Наш шеф-повар, прошедший обучение на кухнях Парижа и Стамбула, привносит десятилетия мастерства в каждое блюдо. Мы используем только самые свежие местные ингредиенты.',
+    val1_title:'🌿 С Фермы на Стол', val1_text:'Прямое партнерство с местными фермами для самых свежих сезонных продуктов.',
+    val2_title:'👨‍🍳 Профессиональные Повара', val2_text:'Отмеченная наградами кулинарная команда с 20+ летним международным опытом.',
+    val3_title:'🍷 Отборные Вина', val3_text:'Исключительный погреб с более чем 200 этикетками из лучших регионов мира.',
+    val4_title:'✨ Роскошная Атмосфера', val4_text:'Каждая деталь продумана для создания атмосферы утонченной элегантности.',
+    chef_picks:'Выбор Шеф-Повара', featured_title:'Фирменные Творения', featured_sub:'Шедевры, отобранные нашим шеф-поваром — каждое блюдо — это путешествие вкуса и искусства.',
+    explore_menu:'Исследовать', menu_title:'Полное Меню', menu_sub:'Кулинарное путешествие по всему нашему предложению — от лёгких закусок до изысканных десертов.',
+    cat_starters:'Закуски', cat_mains:'Основные Блюда', cat_pizza:'Пицца', cat_burgers:'Бургеры', cat_desserts:'Десерты', cat_drinks:'Напитки',
+    order_label:'Онлайн', order_title:'Онлайн Заказ', order_sub:'Сделайте заказ на доставку или самовывоз. Горячо, свежо и прямо к вашим дверям.',
+    delivery_info:'Информация о Доставке', label_name:'Полное Имя', label_phone:'Номер Телефона', label_address:'Адрес Доставки',
+    label_type:'Тип Заказа', label_payment:'Оплата', label_notes:'Особые Пожелания',
+    delivery:'Доставка', pickup:'Самовывоз', cash:'Наличные при Доставке', card:'Кредитная / Дебетовая Карта',
+    place_order:'Оформить Заказ', order_success:'🎉 Ваш заказ принят! Мы позвоним для подтверждения в ближайшее время.',
+    your_cart:'Ваша Корзина', cart_empty:'Корзина пуста. Добавьте несколько блюд!', total:'Итого',
+    cart_title:'Ваш Заказ', proceed_checkout:'Перейти к Оформлению', continue_shopping:'Продолжить Покупки',
+    reserve_label:'Бронирование', reserve_title:'Забронировать Стол', reserve_sub:'Забронируйте стол для незабываемого гастрономического опыта. Подтвердим в течение 2 часов.',
+    label_date:'Дата', label_time:'Время', label_guests:'Количество Гостей', label_occasion:'Повод (Необязательно)',
+    label_special:'Особые Пожелания', label_email:'Электронная Почта', label_msg:'Сообщение',
+    occ_regular:'Обычный Ужин', occ_bday:'День Рождения', occ_anniversary:'Годовщина', occ_business:'Деловой Ужин',
+    confirm_reservation:'Подтвердить Бронирование', res_success:'✅ Ваша заявка получена! Мы подтвердим по телефону в ближайшее время.',
+    gallery_label:'Галерея', gallery_title:'Визуальное Путешествие', gallery_sub:'Войдите в наш мир — где красота подаётся на каждой тарелке и в каждом уголке.',
+    reviews_label:'Отзывы', reviews_title:'Что Говорят Наши Гости',
+    why_label:'Почему Мы', why_title:'Почему Royal Taste', why_sub:'Мы не просто подаём еду — мы создаём впечатления, которые остаются надолго после последнего кусочка.',
+    stat1:'Довольных Клиентов', stat2:'Фирменных Блюд', stat3:'Лет Опыта', stat4:'Средний Рейтинг',
+    contact_label:'Найдите Нас', contact_title:'Свяжитесь с Нами',
+    address_label:'Адрес', address_val:'42 Grand Boulevard, Ташкент\nУзбекистан, 100000',
+    phone_label:'Телефон', email_label:'Электронная Почта', hours_label:'Часы Работы',
+    mon_fri:'Пн – Пт', sat_sun:'Сб – Вс',
+    contact_us:'Отправить Сообщение', send_msg:'Отправить Сообщение', msg_success:'✅ Сообщение отправлено! Ответим в течение 24 часов.',
+    quick_links:'Быстрые Ссылки', menu_cats:'Меню', contact_info:'Контактная Информация', lang_switcher:'Язык',
+    footer_desc:'Sanctuary изысканной кухни, где кулинарное искусство встречается с тёплым гостеприимством. Каждый ужин — воспоминание, которое остаётся навсегда.',
+    copyright:'© 2025 Royal Taste. Все права защищены.', made_with:'Сделано с ❤️ для исключительного гастрономического опыта',
+    add_cart:'В Корзину',
+  }
+};
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let currentLang = 'en';
+let cart = [];
+let currentSlide = 0;
+
+// ─── RENDER FUNCTIONS ─────────────────────────────────────────────────────────
+function renderFeatured() {
+  const t = i18n[currentLang];
+  document.getElementById('featured-dishes').innerHTML = featuredDishes.map(d => `
+    <div class="dish-card reveal">
+      <div class="dish-img-wrap">
+        <img class="dish-img" src="${d.img}" alt="${d.name}" loading="lazy" />
+        <div class="dish-badge">${d.badge}</div>
+      </div>
+      <div class="dish-body">
+        <h3>${d.name}</h3>
+        <p>${d.desc}</p>
+        <div class="dish-footer">
+          <span class="dish-price">$${d.price}</span>
+          <button class="add-to-cart" onclick="addToCart('${d.id}','${d.name}',${d.price},'${d.img}')">${t.add_cart}</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMenu() {
+  const t = i18n[currentLang];
+  const categories = [
+    { key:'starters', label: t.cat_starters },
+    { key:'mains', label: t.cat_mains },
+    { key:'pizza', label: t.cat_pizza },
+    { key:'burgers', label: t.cat_burgers },
+    { key:'desserts', label: t.cat_desserts },
+    { key:'drinks', label: t.cat_drinks },
+  ];
+  const tabsEl = document.getElementById('menu-tabs');
+  const panelsEl = document.getElementById('menu-panels');
+  tabsEl.innerHTML = categories.map((c,i) => `<button class="menu-tab ${i===0?'active':''}" onclick="switchTab('${c.key}',this)">${c.label}</button>`).join('');
+  panelsEl.innerHTML = categories.map((c,i) => `
+    <div class="menu-panel ${i===0?'active':''}" id="panel-${c.key}">
+      ${menuData[c.key].map(item => `
+        <div class="menu-item">
+          <img class="menu-item-img" src="${item.img}" alt="${item.name}" loading="lazy" />
+          <div class="menu-item-info">
+            <h4>${item.name}</h4>
+            <p>${item.desc}</p>
+            <div class="menu-item-footer">
+              <span class="menu-price">$${item.price}</span>
+              <button class="add-to-cart" onclick="addToCart('${item.id}','${item.name}',${item.price},'${item.img}')">${t.add_cart}</button>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+}
+
+function switchTab(key, btn) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + key).classList.add('active');
+}
+
+function renderGallery() {
+  document.getElementById('gallery-grid').innerHTML = galleryImages.map(img => `
+    <div class="masonry-item reveal" onclick="openLightbox('${img.src}','${img.alt}')">
+      <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+      <div class="masonry-overlay">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+        </svg>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTestimonials() {
+  const track = document.getElementById('testimonial-track');
+  const dots = document.getElementById('carousel-dots');
+  track.innerHTML = testimonials.map(t => `
+    <div class="testimonial-slide">
+      <div class="testimonial-card">
+        <div class="stars">${'★'.repeat(t.stars)}</div>
+        <p class="testimonial-text">"${t.text}"</p>
+        <div class="testimonial-author">
+          <img src="${t.avatar}" alt="${t.name}" loading="lazy" />
+          <div class="testimonial-author-info">
+            <h4>${t.name}</h4>
+            <span>${t.role}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  dots.innerHTML = testimonials.map((_,i) => `<div class="carousel-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`).join('');
+}
+
+function renderWhy() {
+  document.getElementById('why-grid').innerHTML = whyItems.map(w => `
+    <div class="why-card reveal">
+      <div class="why-icon">${w.icon}</div>
+      <h3>${w.title}</h3>
+      <p>${w.desc}</p>
+    </div>
+  `).join('');
+}
+
+// ─── CAROUSEL ────────────────────────────────────────────────────────────────
+function goToSlide(n) {
+  currentSlide = (n + testimonials.length) % testimonials.length;
+  document.getElementById('testimonial-track').style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === currentSlide));
+}
+let autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000);
+function resetAuto() { clearInterval(autoSlide); autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000); }
+document.getElementById('prev-btn').onclick = () => { goToSlide(currentSlide - 1); resetAuto(); };
+document.getElementById('next-btn').onclick = () => { goToSlide(currentSlide + 1); resetAuto(); };
+
+// Swipe support for testimonials on touch devices
+(function() {
+  const carousel = document.querySelector('.testimonial-carousel');
+  let startX = 0, isDragging = false;
+  carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 50) {
+      goToSlide(diff < 0 ? currentSlide + 1 : currentSlide - 1);
+      resetAuto();
+    }
+  }, { passive: true });
+})();
+
+// ─── CART ─────────────────────────────────────────────────────────────────────
+function addToCart(id, name, price, img) {
+  const existing = cart.find(i => i.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ id, name, price, img, qty: 1 }); }
+  updateCartUI();
+  showToast(currentLang === 'en' ? `${name} added to cart!` : currentLang === 'uz' ? `${name} savatga qoʻshildi!` : `${name} добавлено в корзину!`);
+}
+
+function updateQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('cart-badge');
+  badge.style.display = count > 0 ? 'flex' : 'none';
+  badge.textContent = count;
+  const t = i18n[currentLang];
+  const emptyHtml = `<div class="cart-empty">${t.cart_empty}</div>`;
+  const itemsHtml = cart.length === 0 ? emptyHtml : cart.map(i => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${i.img}" alt="${i.name}" />
+      <div class="cart-item-info">
+        <h5>${i.name}</h5>
+        <span>$${(i.price * i.qty).toFixed(2)}</span>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="updateQty('${i.id}',-1)">−</button>
+        <span class="qty-num">${i.qty}</span>
+        <button class="qty-btn" onclick="updateQty('${i.id}',1)">+</button>
+      </div>
+    </div>
+  `).join('');
+  ['sidebar-cart-items','cart-items-main'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = itemsHtml;
+  });
+  ['sidebar-total','cart-total-main'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = `$${total.toFixed(2)}`;
+  });
+}
+
+function openSidebar() {
+  document.getElementById('cart-sidebar').classList.add('open');
+  document.getElementById('cart-overlay').classList.add('open');
+}
+function closeSidebar() {
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+}
+document.getElementById('cart-close').onclick = closeSidebar;
+document.getElementById('cart-overlay').onclick = closeSidebar;
+
+function scrollToCheckout() {
+  closeSidebar();
+  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─── FORMS ───────────────────────────────────────────────────────────────────
+function placeOrder() {
+  const name = document.getElementById('order-name').value.trim();
+  const phone = document.getElementById('order-phone').value.trim();
+  if (!name || !phone) { showToast('Please fill in your name and phone.'); return; }
+  document.getElementById('order-success').style.display = 'block';
+  cart = []; updateCartUI();
+  setTimeout(() => document.getElementById('order-success').style.display = 'none', 5000);
+}
+
+function makeReservation() {
+  const name = document.getElementById('res-name').value.trim();
+  const phone = document.getElementById('res-phone').value.trim();
+  const date = document.getElementById('res-date').value;
+  if (!name || !phone || !date) { showToast('Please fill in name, phone, and date.'); return; }
+  document.getElementById('res-success').style.display = 'block';
+  setTimeout(() => document.getElementById('res-success').style.display = 'none', 5000);
+}
+
+function sendMessage() {
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  if (!name || !email) { showToast('Please fill in name and email.'); return; }
+  document.getElementById('contact-success').style.display = 'block';
+  setTimeout(() => document.getElementById('contact-success').style.display = 'none', 5000);
+}
+
+// ─── LIGHTBOX ────────────────────────────────────────────────────────────────
+function openLightbox(src, alt) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-img').alt = alt;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('lightbox-close').onclick = () => {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+};
+document.getElementById('lightbox').onclick = (e) => {
+  if (e.target === e.currentTarget) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ─── I18N ─────────────────────────────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  const t = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  renderFeatured();
+  renderMenu();
+  updateCartUI();
+}
+
+// ─── NAVBAR ───────────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 400);
+});
+document.getElementById('hamburger').onclick = () => {
+  const nav = document.getElementById('nav-links');
+  const isOpen = nav.classList.toggle('open');
+  document.getElementById('mobile-close').style.display = isOpen ? 'block' : 'none';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+};
+document.getElementById('mobile-close').onclick = closeMobileMenu;
+function closeMobileMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close mobile menu on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeMobileMenu();
+    closeSidebar();
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ─── STATS COUNTER (runs once) ────────────────────────────────────────────────
+let countersStarted = false;
+function animateCounters() {
+  if (countersStarted) return;
+  countersStarted = true;
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'));
+    const suffix = target >= 50 ? '+' : '';
+    let cur = 0;
+    const inc = target / 60;
+    const timer = setInterval(() => {
+      cur = Math.min(cur + inc, target);
+      el.textContent = Math.floor(cur) + suffix;
+      if (cur >= target) { el.textContent = target + suffix; clearInterval(timer); }
+    }, 18);
+  });
+}
+
+// ─── INTERSECTION OBSERVER ────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.closest('#stats')) animateCounters();
+    }
+  });
+}, { threshold: 0.12 });
+
+function observeAll() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+}
+
+// ─── HERO ANIMATION ──────────────────────────────────────────────────────────
+function animateHero() {
+  const badge = document.getElementById('hero-badge');
+  const title = document.getElementById('hero-title');
+  const sub = document.getElementById('hero-sub');
+  const ctas = document.getElementById('hero-ctas');
+  badge.style.transition = 'opacity .8s ease, transform .8s ease';
+  badge.style.transform = 'translateY(20px)';
+  setTimeout(() => { badge.style.opacity = '1'; badge.style.transform = 'translateY(0)'; }, 400);
+  title.style.transition = 'opacity .9s ease, transform .9s ease';
+  title.style.transform = 'translateY(30px)';
+  setTimeout(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; }, 650);
+  sub.style.transition = 'opacity .9s ease';
+  setTimeout(() => { sub.style.opacity = '1'; }, 900);
+  ctas.style.transition = 'opacity .9s ease, transform .9s ease';
+  ctas.style.transform = 'translateY(20px)';
+  setTimeout(() => { ctas.style.opacity = '1'; ctas.style.transform = 'translateY(0)'; }, 1100);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  renderFeatured();
+  renderMenu();
+  renderGallery();
+  renderTestimonials();
+  renderWhy();
+  updateCartUI();
+  setLang('en');
+
+  // Set min date for reservation
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('res-date').min = today;
+  document.getElementById('res-date').value = today;
+
+  // Loader hide
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    animateHero();
+    setTimeout(observeAll, 200);
+  }, 1800);
+});
+</script>
+</body>
+</html>
